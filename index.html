@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css">
+    <S -->
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height:100vh;
+    background: linear-gradient(to right, #7f53ac,#657ced);
+}
+.container{ 
+    background-color: white;
+   position: absolute;
+   width:50%;
+   transform: translate(-50%,-50%);
+    min-width: 580px;
+    top:50%;
+    left: 50%;
+    text-align: center;
+    padding:28px;
+    display: grid;
+    justify-items: center;
+    /* line-height: 40px; */
+    font-size: 3.5vh;
+    border-radius: 8px;
+}
+#num{
+    margin: 30px;
+    border: 2px solid black;
+    font-size: 4.2vh;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width:120px;
+    font-weight: 700;
+    color: #663399;  
+}
+#but{
+    
+    width:160px;
+    padding:15px;
+    border-radius: 5px;
+    background-color: #663399;
+    color: white;
+    border: none;
+    font-size: 3.5vh;
+    cursor: pointer;
+}
+p{  
+   line-height: 40px;
+    font-size: larger;
+    font-weight: 600px;
+}
+    </style>
+    <script>
+        var msg1 = document.getElementById("msg1");
+        var msg2 = document.getElementById("msg2");
+        var msg3 = document.getElementById("msg3");
+        var ans = Math.floor(Math.random()*100)+1;
+        var no_of_guess = 0;
+        var guessed_num = [];
+
+    function play(){
+    let userval = document.getElementById("num").value;
+    if(userval<1 || userval>100 ){
+        alert("Please enter a value between 1-100 !!");
+        document.num.name.focus();
+
+    }
+   
+    else {
+        guessed_num.push(userval);
+        no_of_guess+=1;
+        if(userval<ans){
+            document.getElementById("msg1").innerHTML="Your guess is too low";
+            // msg1.textContent="Your guess is too low";
+            document.getElementById("msg2").innerHTML="No. of guesses: "+no_of_guess;
+            document.getElementById("msg3").innerHTML="Guessed numbers are "+guessed_num;
+        }
+        else if(userval>ans){
+            document.getElementById("msg1").innerHTML="Your guess is too high";
+            // msg1.textContent="Your guess is too low";
+            document.getElementById("msg2").innerHTML="No. of guesses: "+no_of_guess;
+            document.getElementById("msg3").innerHTML="Guessed numbers are : "+guessed_num;
+        }
+        else if(userval==ans){
+            document.getElementById("msg1").innerHTML="Yeah!! YOU WIN ";
+            // msg1.textContent="Your guess is too low";
+            document.getElementById("msg2").innerHTML="It took you "+no_of_guess+" guesses";
+            // document.getElementById("msg3").innerHTML="Guessed numbers are "+guessed_num;
+        }
+        
+    }
+
+    }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h3>Hey! I am thinking of a number between 1-100</h3>
+        <h3>Can you guess it ?</h3>
+        <input type="text" id="num" placeholder="Num "/><br>
+        <input type="button" onclick="play()" id="but" value="GUESS"><br>
+        <p id="msg1">No. of Guesses:0</p>
+        <p id="msg3"></p>
+        <p id="msg2"></p>
+       
+    </div>
+    <!-- <script src="index.js"></script> -->
+</body>
+</html>
